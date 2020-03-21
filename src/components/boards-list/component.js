@@ -17,22 +17,13 @@ const BoardContent = styled.div`
 `
 
 const BoardsList = props => {
-  const { boards, error, getEstimations, isLoading } = props
+  const { boards, error, isLoading } = props
 
   if (error) {
     return <span />
   }
   if (isLoading) {
     return <LinearProgress />
-  }
-
-  const renderEstimations = board => {
-    const estimations = getEstimations(board)
-    return (
-      <span>
-        ({estimations.estimated || 0})[{estimations.consumed || 0}]
-      </span>
-    )
   }
 
   return (
@@ -42,7 +33,7 @@ const BoardsList = props => {
         return (
           <BoardContent key={board.board.id}>
             <Typography variant="headline" style={{ marginBottom: 20, textAlign: 'center' }}>
-              {boardName} {renderEstimations(board)}
+              {boardName}
             </Typography>
             <Board board={board.board} config={board.config} />
           </BoardContent>
