@@ -1,5 +1,6 @@
 import React from 'react'
 import { get, has, invoke, isEqual } from 'lodash'
+import styled from 'styled-components'
 
 // Material UI
 import { withStyles } from '@material-ui/core/styles'
@@ -12,7 +13,6 @@ import proptypes from './prop-types'
 import BoardsList from '../boards-list'
 import EstimationCard from '../estimation-card'
 import Footer from '../footer'
-import ListTabs from '../list-tabs'
 import MembersList from '../members-list'
 import Notification from '../notification'
 
@@ -21,6 +21,12 @@ import { getMemberByOneOfProperty } from '../../utils/get-member-by-property'
 
 // Styles Components
 import { BlockContainer } from '../styled-components'
+
+const BoardsContainer = styled.div`
+  display: flex;
+  align-items: start;
+  justify-content: start;
+`
 
 // Material UI Styles
 const styles = theme => ({
@@ -42,7 +48,7 @@ class MainApp extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      showOptions: false,
+      showOptions: true,
       showEstimationCard: false,
     }
   }
@@ -170,13 +176,11 @@ class MainApp extends React.Component {
               </BlockContainer>
             </React.Fragment>
           )}
-          <BlockContainer>
-            <Typography variant="headline" component="h2">
-              Boards {get(this.props, 'app.listToggle.toggleList', '').replace(/\//g, '')}
-            </Typography>
-            <ListTabs />
-          </BlockContainer>
-          <BoardsList />
+          <BoardsContainer>
+            {get(this.props, 'app.config.lists').map(pattern => (
+              <BoardsList key={pattern} toggleList={pattern} />
+            ))}
+          </BoardsContainer>
           {isAppLoading && (
             <div className={classes.bottomLoader}>
               <LinearProgress />

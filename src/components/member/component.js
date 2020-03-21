@@ -1,5 +1,4 @@
 import React from 'react'
-import { get } from 'lodash'
 
 import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
@@ -21,13 +20,13 @@ const MemberContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100px;
+  flex: 1;
   text-align: center;
   align-items: center;
 `
 
 const Member = props => {
-  const { error, estimations, isActive, isLoading, member, onClick } = props
+  const { error, isActive, isLoading, member, onClick } = props
 
   if (error) {
     return <span />
@@ -35,9 +34,6 @@ const Member = props => {
   if (isLoading) {
     return <LinearProgress />
   }
-
-  const estimated = get(estimations, 'estimated', 0)
-  const consumed = get(estimations, 'consumed', 0)
 
   return (
     <Card
@@ -50,12 +46,8 @@ const Member = props => {
       <CardContent className={props.classes.root}>
         <MemberContainer>
           <UserAvatar member={member} />
-          <Typography style={{ color: isActive ? '#fff' : undefined }}>
-            {estimations && (
-              <span className={`member_card_${member.id}--estimations`}>
-                ({estimated})[{consumed}]
-              </span>
-            )}
+          <Typography style={{ color: isActive ? '#fff' : undefined, marginLeft: '0.5em' }}>
+            {member.username}
           </Typography>
         </MemberContainer>
       </CardContent>

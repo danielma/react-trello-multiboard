@@ -6,7 +6,6 @@ import { resetEstimations } from '../../actions/app'
 
 const mapStateToProps = state => ({
   lists: get(state, 'lists', {}),
-  toggleList: get(state, 'app.listToggle.toggleList'),
 })
 
 const mapDispatchToProps = dispatch => ({ dispatch })

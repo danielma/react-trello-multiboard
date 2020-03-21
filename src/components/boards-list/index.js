@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = () => ({})
 
-const mergeProps = stateProps => {
+const mergeProps = (stateProps, _, ownProps) => {
   const boards = get(stateProps.boards, 'data', {})
   const isLoading = get(stateProps.boards, 'isLoading', false)
   const error = get(stateProps.boards, 'error')
@@ -41,6 +41,7 @@ const mergeProps = stateProps => {
     error,
     getEstimations,
     isLoading,
+    ...ownProps,
   }
 }
 

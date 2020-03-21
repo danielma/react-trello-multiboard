@@ -1,23 +1,19 @@
 import React from 'react'
-import { get, map } from 'lodash'
+import { map } from 'lodash'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
 import styled from 'styled-components'
 
-import { getBoardName } from '../../utils/get-board-name'
-
 import proptypes from './prop-types'
-import { ScrollContainer } from '../styled-components'
 import Board from '../board'
 
 // Styled Component
 const BoardContent = styled.div`
-  flex: 1;
-  margin-right: 10px;
+  margin-right: 20px;
 `
 
 const BoardsList = props => {
-  const { boards, error, isLoading } = props
+  const { boards, error, isLoading, toggleList } = props
 
   if (error) {
     return <span />
@@ -27,19 +23,16 @@ const BoardsList = props => {
   }
 
   return (
-    <ScrollContainer>
-      {map(boards, board => {
-        const boardName = getBoardName(get(board, 'board.name', ''))
-        return (
-          <BoardContent key={board.board.id}>
-            <Typography variant="headline" style={{ marginBottom: 20, textAlign: 'center' }}>
-              {boardName}
-            </Typography>
-            <Board board={board.board} config={board.config} />
-          </BoardContent>
-        )
-      })}
-    </ScrollContainer>
+    <BoardContent>
+      <Typography variant="headline" style={{ marginBottom: 20, textAlign: 'center' }}>
+        {toggleList}
+      </Typography>
+      {map(boards, board => (
+        <div key={board.board.id}>
+          <Board board={board.board} config={board.config} toggleList={toggleList} />
+        </div>
+      ))}
+    </BoardContent>
   )
 }
 BoardsList.displayName = 'BoardsList'
