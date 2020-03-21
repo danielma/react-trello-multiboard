@@ -42,7 +42,15 @@ class TrelloCard extends React.Component {
   }
 
   render() {
-    const { boardName, card, isHidden, listName, minimizeLabels, toggleMinimizeLabels } = this.props
+    const {
+      boardName,
+      card,
+      isHidden,
+      listName,
+      minimizeLabels,
+      toggleMinimizeLabels,
+      board,
+    } = this.props
 
     return (
       <div
@@ -55,6 +63,7 @@ class TrelloCard extends React.Component {
       >
         <TrelloCardUI
           {...card}
+          board={board}
           boardName={boardName}
           listName={listName}
           minimizeLabels={minimizeLabels}

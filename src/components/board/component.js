@@ -30,7 +30,7 @@ class Board extends React.Component {
   }
 
   renderList() {
-    const { lists, toggleList } = this.props
+    const { lists, toggleList, board } = this.props
     const filteredLists = filter(lists, ['pattern', toggleList])
 
     if (filteredLists.length === 0) {
@@ -39,7 +39,7 @@ class Board extends React.Component {
 
     // we only show those lists which match the current toggleList
     return map(filteredLists, list => (
-      <TrelloCardsList key={list.list.id} list={list.list} config={list.config} />
+      <TrelloCardsList key={list.list.id} list={list.list} config={list.config} board={board} />
     ))
   }
 

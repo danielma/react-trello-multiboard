@@ -19,7 +19,7 @@ class TrelloCardsList extends React.Component {
   }
 
   renderList() {
-    const { cards, list } = this.props
+    const { cards, list, board } = this.props
 
     if (cards.length === 0) {
       return <Typography>No matching card(s) found</Typography>
@@ -30,6 +30,7 @@ class TrelloCardsList extends React.Component {
         key={card.card.id}
         card={card.card}
         config={card.config}
+        board={board}
         listName={get(list, 'name', '')}
       />
     ))

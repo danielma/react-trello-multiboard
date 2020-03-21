@@ -41,6 +41,7 @@ describe('Component/TrelloCard', () => {
     expect(JSON.stringify(element.props())).toEqual(
       JSON.stringify({
         ...props.card,
+        board: props.board,
         boardName: props.boardName,
         listName: props.listName,
         minimizeLabels: true,

@@ -54,10 +54,14 @@ export const authenticateUser = () =>
   })
 
 export const getMeBoards = () =>
-  new Promise((resolve, reject) => getQuery('/member/me/boards?fields=id,name', resolve, reject))
+  new Promise((resolve, reject) =>
+    getQuery('/member/me/boards?fields=id,name,prefs', resolve, reject),
+  )
 
 export const getBoard = boardId =>
-  new Promise((resolve, reject) => getQuery(`/boards/${boardId}?fields=id,name`, resolve, reject))
+  new Promise((resolve, reject) =>
+    getQuery(`/boards/${boardId}?fields=id,name,prefs`, resolve, reject),
+  )
 
 export const getLists = boardId =>
   new Promise((resolve, reject) =>

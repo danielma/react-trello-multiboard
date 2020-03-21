@@ -15,14 +15,6 @@ exports[`Component/BoardsList should render without throwing an error 1`] = `
       variant="headline"
     >
       board-1
-       
-      <span>
-        (
-        3
-        )[
-        2
-        ]
-      </span>
     </WithStyles(Typography)>
     <Connect(Board)
       board={

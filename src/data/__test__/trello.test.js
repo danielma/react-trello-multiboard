@@ -193,7 +193,7 @@ describe('data/Trello', () => {
     const Trello = require('../trello')
 
     expect(Trello.getMeBoards()).resolves.toEqual('success')
-    expect(TrelloJs.get.mock.calls[0][0]).toBe('/member/me/boards?fields=id,name')
+    expect(TrelloJs.get.mock.calls[0][0]).toBe('/member/me/boards?fields=id,name,prefs')
   })
 
   test('getBoard should be called with the correct query', () => {
@@ -201,7 +201,7 @@ describe('data/Trello', () => {
     const Trello = require('../trello')
 
     expect(Trello.getBoard('board-1')).resolves.toEqual('success')
-    expect(TrelloJs.get.mock.calls[0][0]).toBe('/boards/board-1?fields=id,name')
+    expect(TrelloJs.get.mock.calls[0][0]).toBe('/boards/board-1?fields=id,name,prefs')
   })
 
   test('getLists should be called with the correct query', () => {

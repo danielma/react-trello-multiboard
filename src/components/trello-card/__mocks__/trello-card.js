@@ -3,6 +3,13 @@ import { mockExampleUser1, mockExampleUser2 } from '../../../__mocks__/mocks'
 export const props = {
   addEstimations: jest.fn(),
   boardName: 'example-board',
+  board: {
+    name: 'example-board',
+    prefs: {
+      backgroundTopColor: '#000000',
+      backgroundBottomColor: '#000000',
+    },
+  },
   card: {
     badges: {
       description: false,

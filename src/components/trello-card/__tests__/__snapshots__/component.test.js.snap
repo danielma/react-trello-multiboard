@@ -20,6 +20,15 @@ exports[`Component/TrelloCard should render without throwing an error 1`] = `
       ],
     }
   }
+  board={
+    Object {
+      "name": "example-board",
+      "prefs": Object {
+        "backgroundBottomColor": "#000000",
+        "backgroundTopColor": "#000000",
+      },
+    }
+  }
   boardName="example-board"
   card={
     Object {
@@ -94,6 +103,15 @@ exports[`Component/TrelloCard should render without throwing an error 1`] = `
           "description": false,
         }
       }
+      board={
+        Object {
+          "name": "example-board",
+          "prefs": Object {
+            "backgroundBottomColor": "#000000",
+            "backgroundTopColor": "#000000",
+          },
+        }
+      }
       boardName="example-board"
       id="id-1"
       idBoard="board-1"
@@ -144,6 +162,11 @@ exports[`Component/TrelloCard should render without throwing an error 1`] = `
       >
         <div
           className="trello-card"
+          style={
+            Object {
+              "backgroundColor": "#000000",
+            }
+          }
         >
           <div
             className="trello-card__content"

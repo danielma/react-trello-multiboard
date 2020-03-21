@@ -11,6 +11,7 @@ describe('Component/TrelloCardUi', () => {
       shallow(
         <TrelloCardUi
           {...props.card}
+          board={props.board}
           boardName={props.boardName}
           listName={props.listName}
           minimizeLabels

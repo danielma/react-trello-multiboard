@@ -9,6 +9,11 @@ exports[`Component/TrelloCardUi should render without throwing an error 1`] = `
 >
   <div
     className="trello-card"
+    style={
+      Object {
+        "backgroundColor": "#000000",
+      }
+    }
   >
     <div
       className="trello-card__content"

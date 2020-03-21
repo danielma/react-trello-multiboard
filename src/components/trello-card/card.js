@@ -18,7 +18,7 @@ const onClick = (event, callback = () => {}) => {
 // - handle case when avatarHash is null, use `initials` on user instead
 const TrelloCardUI = ({
   badges,
-  boardName,
+  board,
   labels,
   members,
   minimizeLabels,
@@ -33,7 +33,7 @@ const TrelloCardUI = ({
     onClick={event => onClick(event, toggleMinimizeLabels)}
     target="_blank"
   >
-    <div className="trello-card">
+    <div className="trello-card" style={{ backgroundColor: board.prefs.backgroundTopColor }}>
       <div className="trello-card__content">
         <div className="trello-card--labels">
           {map(labels, label => (
@@ -100,12 +100,14 @@ const TrelloCardUI = ({
         </div>
       </div>
       <div className="trello-card__board-details">
-        <div className="trello-card__board-name">{boardName}:</div>
+        <div className="trello-card__board-name">{board.name}:</div>
         <div className="trello-card__list-name">{listName}</div>
       </div>
     </div>
   </a>
 )
+
+const { string, shape } = PropTypes
 
 TrelloCardUI.displayName = 'TrelloCardUI'
 TrelloCardUI.propTypes = {
@@ -116,7 +118,13 @@ TrelloCardUI.propTypes = {
     checkItems: PropTypes.number,
     checkItemsChecked: PropTypes.number,
   }).isRequired,
-  boardName: PropTypes.string.isRequired,
+  board: shape({
+    name: string.isRequired,
+    prefs: shape({
+      backgroundBottomColor: string.isRequired,
+      backgroundTopColor: string.isRequired,
+    }).isRequired,
+  }).isRequired,
   labels: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
